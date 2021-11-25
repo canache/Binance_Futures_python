@@ -576,6 +576,16 @@ class RequestClient(object):
         self.refresh_limits(response[1])
         return response[0]
 
+    def get_position_symbol_v2(self, symbol) -> any:
+        """
+        Position Information (USER_DATA)
+
+        GET /fapi/v2/positionRisk (HMAC SHA256) Get current account information for a given symbol.
+        """
+        response = call_sync(self.request_impl.get_position_symbol_v2(symbol))
+        self.refresh_limits(response[1])
+        return response[0]
+
     def get_leverage_bracket(self, symbol: 'str' = None) -> any:
         """
         Notional and Leverage Brackets (USER_DATA)
